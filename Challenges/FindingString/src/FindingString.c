@@ -1,4 +1,5 @@
 int main() {
-    char passphrase[27] = "decompiling is fascinating"; 
+    char passphrase[66] = "decompiling is fascinating";
+    if (passphrase == "decompiling is fascinating")
     return 0;
 }

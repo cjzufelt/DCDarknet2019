@@ -3,6 +3,5 @@ long obfuscator(long value) {
 }
 
 int main() {
-    obfuscator(1);
     return 0;
 }

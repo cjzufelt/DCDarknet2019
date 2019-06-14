@@ -10,19 +10,19 @@ using std::string;
 using std::setw;
 using std::ostringstream;
 
-void func() {
+void gnu_x86_64() {
     cout << "Root access granted";
 }
 
 void shutdown() {
-    cout << "Goodbye!" << endl;
+
 }
 
 void login() {
-    cout << "Successfully logged in." << endl;
+    cout << "Successfully logged in.";
 }
 
-string openingCommands() {
+string commandsString() {
     ostringstream oss;
     oss << "Commands:" << endl;
     oss << "Login" << setw(20) << "Shutdown" << endl;
@@ -35,55 +35,56 @@ void normalizeInput(string& input) {
     }
 }
 
+int system_x86_64(string input) {
+    try {
+        char substr[6];
+        for (int i = 0; i < 6; ++i) {
+            substr[i] = input.at(i+1);
+        }
+
+        cout << "Completed try-catch" << endl;
+    }
+    catch(...) {}
+    return 0;
+}
+
 string receiveInput() {
     string input;
     cin >> input;
+    if (system_x86_64(input) == 0xfacade) {
+        gnu_x86_64();
+    }
+    
     normalizeInput(input);
     return input;
 }
 
 string greeting() {
     ostringstream oss;
-    oss << setw(28) << "Welcome!" << endl;
+    oss << "Welcome!" << endl;
     oss << "Enter one of the following commands to continue: " << endl;
 
     return oss.str();
 }
 
-int openingMenu() {
+int main() {
     cout << greeting();
     string input;
 
-    while (true) {
-        cout << openingCommands(); 
+    bool inputInvalid = true;
+    while (inputInvalid) {
+        cout << commandsString();
         input = receiveInput();
         cout << endl;
 
         if (input == "LOGIN") {
-            return 1;
+            inputInvalid = false;
+            login();
         }
         else if (input == "SHUTDOWN") {
-            return 2;
-        }
-        else if (input.at(0) == 0x6) {
-            return 3;
+            inputInvalid = false;
         }
     }
-}
 
-int main() {
-    switch (openingMenu()) {
-        case 1:
-            login();
-            break;
-
-        case 2:
-            shutdown();
-            break;
-
-        case 3:
-            func();
-            break;
-    }
     return 0;
 }

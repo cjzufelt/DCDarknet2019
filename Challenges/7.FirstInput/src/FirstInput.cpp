@@ -24,7 +24,7 @@ string rootCommands();
 string greeting();
 
 void escalate() {
-    cout << "Root access granted";
+    cout << "Root access granted" << endl << endl;
 }
 
 string loginCommands() {

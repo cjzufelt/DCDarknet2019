@@ -10,15 +10,14 @@ using std::string;
 using std::setw;
 using std::ostringstream;
 
-enum Commands {LOGIN, SHUTDOWN, LOGOFF, SECRET};
+enum Commands {LOGIN, SHUTDOWN, LOGOFF, SECRET, ESCALATE};
 
 void normalizeInput();
 string receiveInput();
 void escalate();
 void shutdown();
 string loginCommands();
-void loginMenu();
-void login();
+int loginMenu();
 void rootMenu();
 string rootCommands();
 string greeting();
@@ -34,7 +33,8 @@ string loginCommands() {
     return oss.str();
 }
 
-void loginMenu() {
+int loginMenu() {
+    cout << "Successfully logged in" << endl << endl;
     string input;
 
     while (true) {
@@ -46,18 +46,13 @@ void loginMenu() {
             cout << input.substr(5) << endl << endl;
         }
         else if (input == "LOGOFF") {
-            cout << "Successfully logged off" << endl << endl;
-            return;
+            return LOGOFF;
         }
         else if (input.at(0) == 0x6) {
             escalate();
+            return ESCALATE;
         }
     }
-}
-
-void login() {
-    cout << "Successfully logged in" << endl << endl;
-    loginMenu();
 }
 
 string rootCommands() {
@@ -76,7 +71,13 @@ void rootMenu() {
         cout << endl;
 
         if (input == "LOGIN") {
-            login();
+            int loginReturn = loginMenu();
+            if (loginReturn == LOGOFF) {
+                cout << "Successfully logged off" << endl << endl;
+            }
+            else if (loginReturn == ESCALATE) {
+                return;
+            }
         }
         else if (input == "SHUTDOWN") {
             cout << "Goodbye!" << endl;

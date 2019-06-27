@@ -13,6 +13,12 @@ Answer: My Queen
 
 Challenge 7: <Now let's have them modify the binary to unlock the functionality. The functionality should be complex enough that it would be time consuming to analyze statically> Having used Ghidra to identify where the hidden functionality is located, let's restore it. For this quest, you'll need to use Ghidra to identify an address, and then use a hex editor to modify that address. In the previous exercise, you found that the hidden functionality requires an unprintable hex value to be entered. There are different ways of dynamically accessing this functionality, but for this exercise, try to modify the hex value to an ASCII value of your choice (always edit a copy of your binary, not the original!). Now when you run the program, you can enter this ASCII value to get the program to execute the "hidden" path. For large programs, you will be able to reverse engineer functionality much more quickly when you use a combination of static (Ghidra) and dynamic (execute the binary, usually in a VM or sandbox) analysis. What is the value printed to the user after the string that indicates the hidden functionality is executing? <doesn't matter. Throw a ton of stuff at it: AES, relying on memory values to compute output, etc.. So long as it is repeatable.>
 Challenge 8: Buffer overflow that loses data, require user to brute force the missing/lost byte?
+Challenge 9: <For this to work for DC Darknet, the last few challenges should be really hard. We should probably unleash the people on a file that occurs in the wild, but we'll need to modify a byte somewhere so they can't just match a hash of the file to a known value, how about a Calculator program? Do we also need to append NOPs in various places to change the size? We'll definitely need to scrub any strings in all of the following.> What is this program?
+Challenge 10: <Same thing, should be very hard. How about a lightweight web browser? Midori?> What is this program?
+Challenge 11: <We don't want to give them anything bigger than a megabyte, because that would probably take a full day at least to understand. What about a lightweight word processor? Abiword?> What is this program?
+Challenge 12: <Last challenge should be different, unique. Can you analyze Ghidra with Ghidra?> What is this program?
+
+
 We're probably going to be good with ~10-20 challenges.
 <Feel free to change any of these. I just find it helpful to plan out what I'm going to do so I can understand what my final objective is, and what I need to teach along the way for people to understand it.>
 

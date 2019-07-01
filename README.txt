@@ -1,1 +1,1 @@
-This repository contains all of the source code and binary executables for the Ghidra questline in DCDarknet 2019. All code was compiled using gcc or g++ with x86-64 bit architecture.
+This repository contains all of the source code and binary executables for the Ghidra questline in DCDarknet 2019. All code was compiled on a GNU/Linux machine using gcc or g++ with x86-64 bit architecture.

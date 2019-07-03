@@ -1,10 +1,12 @@
 #include <iostream>
+#include <string>
 using std::cout;
 using std::endl;
 using std::hex;
 using std::cin;
+using std::string;
 
-int obfuscate(int data) {
+string obfuscate(string data) {
     //cout << hex << data << endl;
     data ^= 0xffffffff;
     cout << data << endl;
@@ -18,7 +20,7 @@ int obfuscate(int data) {
 }
 
 int main() {
-    int input = 0;
+    char input[9];
 
     while (true) {
         cin >> input;

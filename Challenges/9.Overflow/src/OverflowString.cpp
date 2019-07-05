@@ -7,20 +7,19 @@ using std::cin;
 using std::string;
 
 string obfuscate(string data) {
-    //cout << hex << data << endl;
-    data ^= 0xffffffff;
+    for (size_t i = 0; i < data.length(); ++i) {
+        data.at(i) ^= 0xffff;
+        data.at(i) = ~data.at(i);
+        data.at(i) += (0x8);
+    }
+
     cout << data << endl;
-    data = ~data;
-    cout << data << endl;
-    data += (0b1 << 31);
-    cout << data << endl;
-    //cout << (data + (0b1 << 31)) << endl;
-    //cout << hex << (data + (0b1 << 31)) << endl;
+
     return data;
 }
 
 int main() {
-    char input[9];
+    string input;
 
     while (true) {
         cin >> input;

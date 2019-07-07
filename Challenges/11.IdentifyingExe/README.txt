@@ -1,2 +1,2 @@
 What is this program?
-Answer: Kiwix
+Answer: Kiwix or Kiwix-Desktop
